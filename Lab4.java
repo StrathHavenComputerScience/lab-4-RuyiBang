@@ -131,10 +131,59 @@ public class Lab4
   
   public static void connectDots()
   {
-    //insert instructions below
-
-    
-    
+    while(Robot.onDark()){
+      boolean left = false;
+      boolean front = false;
+      boolean right = false;
+        Robot.turnLeft();
+        Robot.move();
+        Robot.move();
+        if(Robot.onDark()){
+            left = true;
+        }
+        turnAround();
+        Robot.move();
+        Robot.move();
+        Robot.turnLeft();
+        Robot.move();
+        Robot.move();
+        if(Robot.onDark()){
+            front = true;
+        }
+        turnAround();
+        Robot.move();
+        Robot.move();
+        Robot.turnLeft();
+        Robot.move();
+        Robot.move();
+        if(Robot.onDark()){
+            right = true;
+        }
+        turnAround();
+        Robot.move();
+        Robot.move();
+        turnRight();
+        if(left != false){
+            Robot.turnLeft();
+            Robot.move();
+            Robot.makeDark();
+            Robot.move();
+        } 
+        if (front != false){
+            Robot.move();
+            Robot.makeDark();
+            Robot.move();
+        } 
+        if (right != false){
+            turnRight();
+            Robot.move();
+            Robot.makeDark();
+            Robot.move();
+        }
+        if (left != true && front != true && right != true){
+            break;
+        }
+    }
   }
   
   public static void testConnectDots1()
