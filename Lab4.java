@@ -22,10 +22,45 @@ public class Lab4
   
   public static void completeBars()
   {
-    //insert instructions below
-
-    
-    
+    int x = 1;
+    int y = 1;
+    while(Robot.frontIsClear()){
+        Robot.move();
+        x++;
+    }
+    turnAround();
+    while(Robot.frontIsClear()){
+        Robot.move();
+    }
+    turnRight();
+    while(Robot.frontIsClear()){
+        Robot.move();
+        y++;
+    }
+    turnAround();
+    while(Robot.frontIsClear()){
+        Robot.move();
+    }
+    turnAround();
+    for(int i =0; i<x; i++){
+        for(int o=0; o<y;o++){
+            if(Robot.onDark()){
+                o=y;
+                turnAround();
+                while(Robot.frontIsClear()) {
+                    Robot.move();
+                }
+                if(i<x-1){
+                    Robot.turnLeft();
+                    Robot.move();
+                    Robot.turnLeft();
+                }
+            } else {
+                Robot.makeDark();
+                Robot.move();
+            }
+        }
+    }
   }
   
   public static void testCompleteBars1()
@@ -44,10 +79,40 @@ public class Lab4
   
   public static void combinePiles()
   {
-    //insert instructions below
-
-    
-    
+    int ex = 0;
+  	int space = 1;
+  	if (Robot.onDark()){
+        	ex++;
+    	}
+  	while(Robot.frontIsClear()){
+      	Robot.move();
+      	space++;
+      	if (Robot.onDark()){
+        	ex++;
+    	}
+    	}
+    	turnAround();
+    	if (Robot.onDark()){
+        	Robot.makeLight();
+    	}
+    	while(Robot.frontIsClear()){
+        	Robot.move();
+        	if (Robot.onDark()){
+        	Robot.makeLight();
+        	}
+    	}
+    	Robot.turnLeft();
+    	Robot.move();
+    	Robot.turnLeft();
+    	for(int i =0; i<space; i++){
+        	if(Robot.onDark() != true && ex > 0){
+            	Robot.makeDark();
+            	ex--;
+        	}
+        	if (i<space-1){
+            	Robot.move();
+        	}
+    	}
   }
 
   public static void testCombinePiles1()
